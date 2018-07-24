@@ -9,11 +9,13 @@ class BooksApp extends React.Component {
   state = {
     books: []
   }
+
   componentDidMount() {
     BooksAPI.getAll().then(books => {
       this.setState({ books })
     })
   }
+
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf)
     BooksAPI.getAll().then(books => {
@@ -22,24 +24,28 @@ class BooksApp extends React.Component {
   }
 
   render() {
-
     return (
       <div className="app">
-
-          <Route exact path='/' render={() => (
-            <MainPage
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <MainPage books={this.state.books} updateShelf={this.updateShelf} />
+          )}
+        />
+        <Route
+          path="/search"
+          render={({ history }) => (
+            <SearchPage
               books={this.state.books}
               updateShelf={this.updateShelf}
+              homePath={() => {
+                history.push('/')
+              }}
             />
-          )}/>
-        <Route path='/search' render={() => (
-            <SearchPage
-            updateShelf={this.updateShelf}
-            books={this.state.books}
-            />
-          )}/>
-        </div>
-
+          )}
+        />
+      </div>
     )
   }
 }
