@@ -79,6 +79,10 @@ search(query)
     ├── index.css # Global styles.
     └── index.js # It is used for DOM rendering.
 ```
+## Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
 ## Project Rubric Criterias
 
 ### Application Setup
@@ -94,19 +98,19 @@ When the browser is refreshed, the same information is displayed on the page.
 
 ### Search Page
 
-1) The search page has a search input field.
-2) The search page behaves correctly:
-a) As the user types into the search field, books that match the query are displayed on the page.
-b) Search results are not shown when all of the text is deleted out of the search input box.
-c) Invalid queries are handled and prior search results are not shown.
-d) The search works correctly when a book does not have a thumbnail or an author. (To test this, try searching for "poetry" and "biography").
-e) The user is able to search for multiple words, such as “artificial intelligence.”
+1. The search page has a search input field.
+2. The search page behaves correctly:
+ * As the user types into the search field, books that match the query are displayed on the page.
+ * Search results are not shown when all of the text is deleted out of the search input box.
+ * Invalid queries are handled and prior search results are not shown.
+ * The search works correctly when a book does not have a thumbnail or an author.
+ * The user is able to search for multiple words, such as “artificial intelligence.”
 
-Search results on the search page allow the user to select “currently reading”, “want to read”, or “read” to place the book in a certain shelf.
+3. Search results on the search page allow the user to select “currently reading”, “want to read”, or “read” to place the book in a certain shelf.
 
-If a book is assigned to a shelf on the main page and that book appears on the search page, the correct shelf should be selected on the search page. If that book's shelf is changed on the search page, that change should be reflected on the main page as well. The option "None" should be selected if a book has not been assigned to a shelf.
+4. If a book is assigned to a shelf on the main page and that book appears on the search page, the correct shelf should be selected on the search page. If that book's shelf is changed on the search page, that change should be reflected on the main page as well. The option "None" should be selected if a book has not been assigned to a shelf.
 
-When an item is categorized on the search page and the user navigates to the main page, it appears on that shelf in the main page.
+5. When an item is categorized on the search page and the user navigates to the main page, it appears on that shelf in the main page.
 
 ### Routing
 
@@ -122,12 +126,36 @@ Books have the same state on both the search page and the main application page:
 
 All JSX code is formatted properly and functional.
 
-## Create React App
+## Demonstration
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+### Single Shelf Movement
 
-## Contributing
+<p align="center">
+<img src="./img/single-shelf-change.gif" alt="single shelf movement" width="640px" height=320px>
+</p>
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+### Bulk Shelf Movement in Search Page
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+<p align="center">
+<img src="./img/bulk-shelf-change-in-searchPage.gif" alt="bulk shelf movement in search page" width="640px" height=320px>
+</p>
+### Bulk Shelf Movement in Main Page
+
+#### Sample #1
+
+<p align="center">
+<img src="./img/bulk-shelf-change-in-mainPage.gif" alt="bulk shelf movement in main page" width="640px" height=320px>
+</p>
+
+#### Sample #2
+
+<p align="center">
+<img src="./img/bulk-shelf-change-in-mainPage2.gif" alt="bulk shelf movement in main page" width="640px" height=320px>
+</p>
+
+
+
+## Authors
+* @richardkalehoff
+* @veronikabenkeser
+* @OzkanAbdullahoglu
