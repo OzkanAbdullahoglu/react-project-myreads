@@ -139,6 +139,7 @@ All JSX code is formatted properly and functional.
 <p align="center">
 <img src="./img/bulk-shelf-change-in-searchPage.gif" alt="bulk shelf movement in search page" width="640px" height=320px>
 </p>
+
 ### Bulk Shelf Movement in Main Page
 
 #### Sample #1
