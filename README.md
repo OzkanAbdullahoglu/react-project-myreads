@@ -4,20 +4,20 @@ This is a project for Udacity's React Fundamentals course.
 
 ## Table of Contents
 
--   [Instructions](#instructions)
--   [Project Rubric Criterias](#project-rubric-criterias)
--   [Demonstration](#demonstration)
--   [Authors](#authors)
+- [Instructions](#instructions)
+- [Project Rubric Criterias](#project-rubric-criterias)
+- [Demonstration](#demonstration)
+- [Authors](#authors)
 
 ## Instructions
 
 ### Backend Server
 
-Backend server had been provided  by Udacity. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods to perform necessary operations on the backend:
+Backend server had been provided by Udacity. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods to perform necessary operations on the backend:
 
--   [`getAll`](#getall)
--   [`update`](#update)
--   [`search`](#search)
+- [`getAll`](#getall)
+- [`update`](#update)
+- [`search`](#search)
 
 #### `getAll`
 
@@ -27,8 +27,8 @@ Method Signature:
 getAll()
 ```
 
--   Returns a Promise which resolves to a JSON object containing a collection of book objects.
--   This collection represents the books currently in the bookshelves in the app.
+- Returns a Promise which resolves to a JSON object containing a collection of book objects.
+- This collection represents the books currently in the bookshelves in the app.
 
 #### `update`
 
@@ -38,9 +38,9 @@ Method Signature:
 update(book, shelf)
 ```
 
--   book: `<Object>` containing at minimum an `id` attribute
--   shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
--   Returns a Promise which resolves to a JSON object containing the response data of the POST request
+- book: `<Object>` containing at minimum an `id` attribute
+- shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]
+- Returns a Promise which resolves to a JSON object containing the response data of the POST request
 
 #### `search`
 
@@ -50,9 +50,9 @@ Method Signature:
 search(query)
 ```
 
--   query: `<String>`
--   Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
--   These books do not know which shelf they are on. They are raw results only.
+- query: `<String>`
+- Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
+- These books do not know which shelf they are on. They are raw results only.
 
 ### App Structure
 
@@ -68,7 +68,7 @@ search(query)
     ├── App.js # This is the root of the app.
     ├── MainPage.js # This is a component which demonstrate all of users books in appropriate shelves and also to perform bulk or single move actions
         ├── BookShelf.js # This is a component which handles book's shelves and bulk move action's for MainPage
-            ├── Book.js # This is a component which handles every book's own functionalities and sigle move actions    
+            ├── Book.js # This is a component which handles every book's own functionalities and sigle move actions
     ├── SearchPage.js # This is a component to demonstrate search results and also to perform bulk move actions
             ├── Book.js # This is a component which handles every book's own functionalities and sigle move actions  
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
@@ -102,11 +102,11 @@ When the browser is refreshed, the same information is displayed on the page.
 1.  The search page has a search input field.
 2.  The search page behaves correctly:
 
--   As the user types into the search field, books that match the query are displayed on the page.
--   Search results are not shown when all of the text is deleted out of the search input box.
--   Invalid queries are handled and prior search results are not shown.
--   The search works correctly when a book does not have a thumbnail or an author.
--   The user is able to search for multiple words, such as “artificial intelligence.”
+- As the user types into the search field, books that match the query are displayed on the page.
+- Search results are not shown when all of the text is deleted out of the search input box.
+- Invalid queries are handled and prior search results are not shown.
+- The search works correctly when a book does not have a thumbnail or an author.
+- The user is able to search for multiple words, such as “artificial intelligence.”
 
 3.  Search results on the search page allow the user to select “currently reading”, “want to read”, or “read” to place the book in a certain shelf.
 
@@ -144,20 +144,12 @@ All JSX code is formatted properly and functional.
 
 ### Bulk Shelf Movement in Main Page
 
-#### Sample #1
-
-<p align="center">
-<img src="./img/bulk-shelf-change-in-mainPage.gif" alt="bulk shelf movement in main page" width="640px" height=320px>
-</p>
-
-#### Sample #2
-
 <p align="center">
 <img src="./img/bulk-shelf-change-in-mainPage2.gif" alt="bulk shelf movement in main page" width="640px" height=320px>
 </p>
 
 ## Authors
 
--   @richardkalehoff
--   @veronikabenkeser
--   @OzkanAbdullahoglu
+- @richardkalehoff
+- @veronikabenkeser
+- @OzkanAbdullahoglu
