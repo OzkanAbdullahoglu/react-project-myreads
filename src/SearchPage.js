@@ -6,24 +6,42 @@ import { Link } from 'react-router-dom'
 
 class SearchPage extends Component {
   state = {
+    // to handle search queries
     query: '',
+    // to enable bulk action button
     bulkClassName: 'disabled',
+    // to collect search results
     searchResults: [],
+    // to collect book data which coming from user clicks
     arrayForBulkData: []
   }
 
+  /**
+   * deploy the data inside of the arrayForBulkData state
+   * which coming from user clicks
+   */
   collectBulkData = data => {
     this.setState(state => ({
       arrayForBulkData: state.arrayForBulkData.concat(data)
     }))
   }
 
+  /**
+   * filter the data out of the arrayForBulkData state
+   * which coming from user clicks
+   */
   clearBulkData = data => {
     this.setState(state => ({
-      arrayForBulkData: state.arrayForBulkData.filter(book => book.id !== data.id)
+      arrayForBulkData: state.arrayForBulkData.filter(
+        book => book.id !== data.id
+      )
     }))
   }
 
+  /**
+   * replacing the query with updated one
+   * cancelling the bulk move actions for a refresh start
+   */
   updateQuery = query => {
     this.setState({ query })
     this.getSearchResults(query)
@@ -31,14 +49,25 @@ class SearchPage extends Component {
     this.removeBulkActions()
   }
 
+  /**
+   * to enable bulk move actions button
+   */
   addBulkActions = () => {
     this.setState({ bulkClassName: '' })
   }
 
+  /**
+   * to disable bulk move actions button
+   */
   removeBulkActions = () => {
     this.setState({ bulkClassName: 'disabled' })
   }
 
+  /**
+   * If we have query then look for a match from BooksAPI
+   * In case of getting an error then we do nothing
+   * else we put the results into the searchResults state
+   */
   getSearchResults = query => {
     if (query) {
       BooksAPI.search(query).then(searchResults => {
@@ -61,6 +90,11 @@ class SearchPage extends Component {
             Close
           </Link>
           <div className="search-books-input-wrapper">
+            {/*
+              to get the query from state and assign It as a value
+              In case of any change in the search bar
+              we update the query with this brand new value
+            */}
             <input
               type="text"
               placeholder="Search by title or author"
@@ -69,11 +103,21 @@ class SearchPage extends Component {
             />
           </div>
         </div>
+        {/*
+          to disable or enable bulk actions with Its class
+          we look for the data from the state and implement It
+        */}
         <div className={`bulk-actions ${this.state.bulkClassName}`}>
+          {/*
+            In case of any change in this selection
+            we get the book data from arrayForBulkData state
+            then we use updateShelf to change all shelves into that array
+            lastly redirecting to the homepage with homePath function
+          */}
           <select
             onChange={event => {
               this.state.arrayForBulkData.map(book =>
-                this.props.updateShelf(book, event.target.value)
+              this.props.updateShelf(book, event.target.value)
               )
               this.props.homePath()
             }}
@@ -88,6 +132,10 @@ class SearchPage extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
+            {/*
+              assigning a shelf status as 'none'
+              to the books which we get in search results
+            */}
             {this.state.searchResults.map(searchedBook => {
               let shelfStatus = 'none'
               this.props.books.map(
@@ -96,6 +144,7 @@ class SearchPage extends Component {
               )
               return (
                 <li key={searchedBook.id}>
+                  {/* Book component deployment and passing props */}
                   <Book
                     book={searchedBook}
                     updateShelf={this.props.updateShelf}

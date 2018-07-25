@@ -3,16 +3,16 @@ import { withRouter } from 'react-router-dom'
 
 class Book extends Component {
   state = {
+    // to handle single movement button on every book
     className: '',
+    // to get the current path
     currentPath: [this.props.location.pathname]
   }
 
-  getCurrentPath = () => {
-    this.setState(state => ({
-      currentPath: state.currentPath.concat(this.props.location.pathname)
-    }))
-  }
-
+  /**
+   * to disable single action button
+   * we use className state to manipulate element's class
+   */
   disableSingleAction = () => {
     if (this.state.className) {
       this.setState({ className: '' })
@@ -21,6 +21,19 @@ class Book extends Component {
     }
   }
 
+  /**
+   * If classname state is empty
+   * we clear the data from the clearBulkData state in searchPage
+   * with help of deleteBulkData props
+   * If this was the last clicked book inside the page
+   * then we remove the bulk actions button
+   * with help of disableBulkActions this.props
+   * If classname state is not empty
+   * we push the book's data back to the collectBulkData state in searchPage
+   * with help of pushBulkData this.props
+   * lastly we add the bulk actions button
+   * with help of enableBulkActions props
+   */
   updateSearchPage = () => {
     if (this.state.className) {
       this.props.deleteBulkData(this.props.book)
@@ -33,6 +46,12 @@ class Book extends Component {
     }
   }
 
+  /**
+   * If classname state is empty
+   * we check which shelf user clicks come from
+   * we do appropriate updates up to that shelf
+   * we block bulk actions in multiple shelves and give an alert to user
+   */
   updateMainPage = () => {
     if (this.state.className) {
       if (this.props.currentShelf === 'read') {
@@ -97,6 +116,12 @@ class Book extends Component {
   }
 
   render() {
+    {
+      /*
+      checking If we get back a thumbnail from search results
+      If we do not have a thumbnail then we do nothing to prevent a crush
+     */
+    }
     let thumbnailProperty = this.props.book.imageLinks
       ? this.props.book.imageLinks.thumbnail
       : ''
@@ -104,6 +129,10 @@ class Book extends Component {
     return (
       <div className="book">
         <div className="book-top">
+          {/*
+            after recieving a click we disable single movement button
+            then we check the path to decide where to perform bulk move actions
+          */}
           <input
             className="books-checkbox"
             type="checkbox"
@@ -126,16 +155,28 @@ class Book extends Component {
               backgroundImage: `url("${thumbnailProperty}")`
             }}
           />
+          {/*
+            to disable or enable single movement with Its class
+            we look for the data from the state and implement It
+          */}
           <div className={`book-shelf-changer ${this.state.className}`}>
+            {/*
+              In case of any change in this selection
+              we get the book data from book props
+              then we use updateShelf to change the shelf
+              If we are in the search page
+              redirecting to the homepage with homePathBook props
+              lastly we define the default value of selection
+              as the book's current shelf
+            */}
             <select
               onChange={event => {
                 this.props.updateShelf(this.props.book, event.target.value)
-                  if (this.state.currentPath == '/search') {
-                this.props.homePathBook()
-              }
+                if (this.state.currentPath == '/search') {
+                  this.props.homePathBook()
+                }
               }}
               value={this.props.currentShelf}
-
             >
               <option value="move" disabled>
                 Move to...

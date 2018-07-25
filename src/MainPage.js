@@ -10,16 +10,15 @@ class MainPage extends Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
+          {/* Bookshelf component deployment and passing props */}
           <BookShelf
             books={this.props.books}
             updateShelf={this.props.updateShelf}
           />
         </div>
         <div className="open-search">
-          <Link
-            to='/search'>
-            Add a book
-          </Link>
+          {/* Create a link to search page */}
+          <Link to="/search">Add a book</Link>
         </div>
       </div>
     )
